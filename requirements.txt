@@ -1,0 +1,38 @@
+# NLP / ML libraries
+transformers              # Hugging Face library with pre-trained models (BERT, GPT, T5, etc.)
+transformers[sentencepiece] # Adds SentencePiece tokenizer support (multilingual & seq2seq models)
+datasets                  # Hugging Face datasets: load, preprocess, and share data easily
+sacrebleu                 # BLEU score metric for machine translation evaluation
+rouge_score               # ROUGE metric for text summarization evaluation
+
+# Data handling & utilities
+py7zr                     # Work with .7z compressed files
+pandas                    # Data manipulation and analysis (DataFrames)
+nltk                      # NLP toolkit: tokenization, stemming, stopwords, etc.
+tqdm                      # Progress bars for loops
+PyYAML                    # Read/write YAML config files
+
+# Visualization
+matplotlib                # Create plots and data visualizations
+
+# Deep Learning
+torch                     # PyTorch deep learning framework
+
+# Development / Experimentation
+notebook                  # Run Jupyter notebooks
+
+# Cloud & Storage
+boto3                     # AWS SDK (S3, EC2, etc.)
+mypy-boto3-s3             # Type hints for boto3 S3 (better IDE autocompletion)
+
+# Configuration & Utilities
+python-box==6.0.2         # Access dicts with dot notation (cfg.key instead of cfg["key"])
+ensure==1.0.2             # Input/output validation utilities
+
+# Web Development (APIs)
+fastapi==0.78.0           # High-performance web framework for APIs
+uvicorn==0.18.3           # ASGI server for FastAPI
+Jinja2==3.1.2             # Templating engine for HTML rendering
+
+# Project-specific
+-e .                      # Install current project in editable/development mode
