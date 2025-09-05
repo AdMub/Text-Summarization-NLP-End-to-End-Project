@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Summarizer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      background: #fff;
+      width: 90%;
+      max-width: 800px;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #222;
+    }
+
+    textarea {
+      width: 100%;
+      height: 180px;
+      margin: 15px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      resize: none;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    textarea:focus {
+      border: 1px solid #2575fc;
+      outline: none;
+      box-shadow: 0 0 5px rgba(37,117,252,0.5);
+    }
+
+    button {
+      padding: 12px 25px;
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+      margin: 0 auto;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    }
+
+    #summary {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      border-left: 5px solid #2575fc;
+      min-height: 80px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ AI Text Summarizer ✨</h1>
+    <form id="summarizeForm">
+      <textarea id="inputText" placeholder="Paste or type your text here..."></textarea>
+      <button type="submit">Summarize Text</button>
+    </form>
+    <div id="summary"><em>Your summary will appear here...</em></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("summarizeForm");
+    const summaryBox = document.getElementById("summary");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const text = document.getElementById("inputText").value;
+
+      summaryBox.innerHTML = "<em>⏳ Summarizing...</em>";
+
+      try {
+        const response = await fetch("/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text })
+        });
+
+        const data = await response.json();
+        summaryBox.innerHTML = "<h3>📌 Summary:</h3><p>" + (data.summary || data.error) + "</p>";
+      } catch (error) {
+        summaryBox.innerHTML = "<p style='color:red;'>❌ Error: " + error.message + "</p>";
+      }
+    });
+  </script>
+</body>
+</html>
