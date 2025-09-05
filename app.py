@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from pydantic import BaseModel
 from fastapi.responses import RedirectResponse, Response, HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
 
@@ -13,6 +14,14 @@ class TextInput(BaseModel):
 
 
 app = FastAPI(title="Text Summarization App")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # for dev, allows React on localhost
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Templates directory
 templates = Jinja2Templates(directory="templates")
