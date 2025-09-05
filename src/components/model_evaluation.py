@@ -31,7 +31,7 @@ class ModelEvaluation:
         for article_batch, target_batch in tqdm(
             zip(article_batches, target_batches), total=len(article_batches)):
             
-            inputs = tokenizer(article_batch, max_length=1024,  truncation=True, 
+            inputs = tokenizer(["summarize: " + text for text in article_batch], max_length=512,  truncation=True, 
                             padding="max_length", return_tensors="pt")
             
             summaries = model.generate(input_ids=inputs["input_ids"].to(device),
@@ -58,7 +58,7 @@ class ModelEvaluation:
     def evaluate(self):
         device = "cuda" if torch.cuda.is_available() else "cpu"
         tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_path)
-        model_pegasus = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path).to(device)
+        model_t5 = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path).to(device)
        
         #loading data 
         dataset_samsum_pt = load_from_disk(self.config.data_path)
@@ -69,10 +69,16 @@ class ModelEvaluation:
         rouge_metric = load_metric('rouge')
 
         score = self.calculate_metric_on_test_ds(
-        dataset_samsum_pt['test'][0:10], rouge_metric, model_pegasus, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary'
+        dataset_samsum_pt['test'][0:10], rouge_metric, model_t5, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary'
             )
 
-        rouge_dict = dict((rn, score[rn].mid.fmeasure ) for rn in rouge_names )
+        rouge_dict = {}
+        for rn in rouge_names:
+            val = score[rn]
+            if hasattr(val, "mid"):  # old API
+                rouge_dict[rn] = val.mid.fmeasure
+            else:  # new API (already float)
+                rouge_dict[rn] = float(val)
 
         df = pd.DataFrame(rouge_dict, index = ['pegasus'] )
         df.to_csv(self.config.metric_file_name, index=False)
