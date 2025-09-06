@@ -1,7 +1,7 @@
 # 📝 Text Summarization NLP End-to-End Project
 
-![Build Status](https://img.shields.io/github/actions/workflow/status/AdMub/Text-Summarization-NLP-End-to-End-Project/main.yml?branch=main&label=CI%2FCD%20Build&logo=github)
-![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)  
+![Build Status](https://img.shields.io/github/actions/workflow/status/AdMub/Text-Summarization-NLP-End-to-End-Project/main.yml?branch=main&label=CI%2FCD%20Build&logo=github)  
+![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)   
 ![AWS](https://img.shields.io/badge/Deployed%20on-AWS-orange?logo=amazon-aws)  
 ![MLflow](https://img.shields.io/badge/MLflow-Tracking%20Enabled-blue?logo=mlflow)  
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)  
