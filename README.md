@@ -95,14 +95,20 @@ Text-Summarization-NLP-End-to-End-Project/
 ## 🖼️ Screenshots
  
 **Backend HTML UI**  
+
 <img width="1757" height="923" alt="fastAPi" src="https://github.com/user-attachments/assets/cc5d43c8-7277-4839-93a2-353657a3c18c" />
 
+
 **Frontend HTML UI**  
+
 <img width="1920" height="932" alt="web" src="https://github.com/user-attachments/assets/6ae66c62-7cb9-4091-b85a-9367fa5ddbb0" />
 
 
+
 **React Frontend UI**  
+
 <img width="1920" height="455" alt="react" src="https://github.com/user-attachments/assets/dc223310-8731-4ca0-a01c-f6da1d97e3b3" />
+
 
 ---
 
