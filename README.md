@@ -43,26 +43,27 @@ This project implements:
 ```bash
 Text-Summarization-NLP-End-to-End-Project/
 │
-├── artifacts/ # Saved artifacts (data, checkpoints, etc.)
-├── config/ # Config files
-├── datasets/ # Raw / processed datasets
-├── logs/ # Logging
-├── mlruns/ # MLflow experiment tracking
-├── research/ # Research & experimentation notebooks
-├── src/ # Source code for pipeline
-├── templates/ # Jinja2 HTML templates (FastAPI)
-├── text-summarizer-frontend/ # React + Tailwind frontend
+├── artifacts/                 # Saved artifacts (data, checkpoints, models, etc.)
+├── config/                    # Configuration files
+├── datasets/                  # Raw / processed datasets
+├── logs/                      # Logging files
+├── mlruns/                    # MLflow experiment tracking
+├── research/                  # Research & experimentation notebooks
+├── src/                       # Source code for pipeline modules
+├── templates/                 # Jinja2 HTML templates (FastAPI webapp)
+├── text-summarizer-frontend/  # React + Tailwind frontend (UI)
 │
-├── app.py # FastAPI entrypoint
-├── main.py # Project main script
-├── Dockerfile # Docker build file
-├── requirements.txt # Python dependencies
-├── setup.py # Package setup
-├── params.yaml # Training parameters
-├── .github/workflows/ # GitHub Actions CI/CD
-│ └── main.yml
+├── app.py                     # FastAPI entrypoint (backend API)
+├── main.py                    # Main project script
+├── Dockerfile                 # Docker build configuration
+├── requirements.txt           # Python dependencies
+├── setup.py                   # Project package setup
+├── params.yaml                # Training parameters & hyperparameters
+├── .github/workflows/         # GitHub Actions (CI/CD pipelines)
+│   └── main.yml
 │
-└── README.md # Project documentation
+└── README.md                  # Project documentation
+
 ```
 
 ---
